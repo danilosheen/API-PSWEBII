@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
+const {obterProfessores} = require('./model/professorModel');
 
 app.use(express.json());
 
@@ -26,7 +26,7 @@ var dados = [
 app.post('/login', (req, res) => {
     if (req.body.user === 'harleymacedo' && req.body.pass === '123456') {
         const id = 1;
-        var token = jwt.sign({id}, 'chaveapp123', {expiresIn: 300});
+        var token = jwt.sign({id}, process.env.APP_KEY, {expiresIn: 300});
         res.set("x-access-token", token);
         res.json({auth: true, token: token});
     } else {
@@ -52,6 +52,17 @@ function verifyJWT (req, res, next) {
 
 app.get('/professores', (req, res) => {
     res.json(dados);
+});
+
+app.get('/bd/professores', async (req, res) => {
+    try{
+        const resultado = await obterProfessores(req, res);
+        const dados = await resultado.rows;
+        res.json(dados);
+    } catch(erro) {
+        res.json({'mensagem': 'Erro na obteção dos dados'})
+    }
+
 });
 
 app.get('/professores/:id', (req, res) => {
@@ -86,7 +97,7 @@ app.put('/professores', (req, res) => {
         } 
     });
     res.json({
-        mensagem: 'Informação atualizada com sucesso',
+        mensagem: 'Informação atualizada',
         erro: false
     });
 });
