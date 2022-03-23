@@ -1,5 +1,5 @@
-const {pool} = require('pg');
-const con = new pool({
+const {Pool} = require('pg');
+const con = new Pool({
     connectionString: process.env.CON_STR 
 });
 
