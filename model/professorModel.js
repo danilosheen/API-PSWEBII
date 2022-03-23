@@ -1,8 +1,8 @@
 const con = require('./conexao');
 
-const obterProfessores = async (req, res) => {
-    const resultado = await con.query('select * from professor2');
+const obterAlunos = async (req, res) => {
+    const resultado = await con.query('select * from Alunos');
     return resultado;
 }
 
-module.exports = {obterProfessores}
+module.exports = {obterAlunos}
