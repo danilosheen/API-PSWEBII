@@ -42,7 +42,7 @@ function verifyJWT (req, res, next) {
         return res.status(401).json({auth: false, mensagem: 'Sem token de verificação'});
     }
 
-    jwt.verify(token, 'chaveapp123', function (error, decoded) {
+    jwt.verify(token, process.env.APP_KEY, function (error, decoded) {
         if (error) {
             return res.status(500).json({mensagem: 'Token inválido'});
         }
@@ -114,4 +114,4 @@ app.delete('/professores', (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT);
