@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-const {obterProfessores} = require('./model/professorModel');
+const {obterProfessores, obterAlunos} = require('./model/professorModel');
 
 app.use(express.json());
 
@@ -54,9 +54,9 @@ app.get('/professores', (req, res) => {
     res.json(dados);
 });
 
-app.get('/bd/professores', async (req, res) => {
+app.get('/bd/alunos', async (req, res) => {
     try{
-        const resultado = await obterProfessores(req, res);
+        const resultado = await obterAlunos(req, res);
         const dados = await resultado.rows;
         res.json(dados);
     } catch(erro) {
