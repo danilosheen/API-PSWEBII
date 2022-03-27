@@ -50,7 +50,7 @@ function verifyJWT (req, res, next) {
     });
 }
 
-app.get('/professores', (req, res) => {
+app.get('/alunos', (req, res) => {
     res.json(dados);
 });
 
@@ -65,7 +65,7 @@ app.get('/bd/alunos', async (req, res) => {
 
 });
 
-app.get('/professores/:id', (req, res) => {
+app.get('/alunos/:id', (req, res) => {
     let achado = null;
     dados.forEach( (objeto) => {
         if (objeto.id == req.params.id) {
@@ -82,7 +82,7 @@ app.get('/professores/:id', (req, res) => {
     }
 });
 
-app.post('/professores', verifyJWT, (req, res, next) => {
+app.post('/alunos', verifyJWT, (req, res, next) => {
     dados.push(req.body);
     res.json({
         mensagem: 'Informação gravada com sucesso',
@@ -90,7 +90,7 @@ app.post('/professores', verifyJWT, (req, res, next) => {
     });
 });
 
-app.put('/professores', (req, res) => {
+app.put('/alunos', (req, res) => {
     dados.forEach( (objeto, indice) => {
         if (objeto.id == req.body.id) {
             dados[indice] = req.body;
@@ -102,7 +102,7 @@ app.put('/professores', (req, res) => {
     });
 });
 
-app.delete('/professores', (req, res) => {
+app.delete('/alunos', (req, res) => {
     dados.forEach( (objeto, indice) => {
         if (objeto.id == req.body.id) {
             dados.splice(indice);
