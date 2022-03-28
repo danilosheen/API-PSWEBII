@@ -1,30 +1,13 @@
 const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
-const {obterProfessores, obterAlunos} = require('./model/professorModel');
+const {obterAlunos} = require('./model/alunoModel');
 
 app.use(express.json());
 
-var dados = [
-    {
-        id: 1,
-        nome: 'Harley Macêdo',
-        area: 'Programação Web'
-    },
-    {
-        id: 2,
-        nome: 'Robson Feitosa',
-        area: 'Estrutura de Dados'
-    },
-    {
-        id: 3,
-        nome: 'Yuri Lacerda',
-        area: 'Banco de Dados'
-    }
-]
 
 app.post('/login', (req, res) => {
-    if (req.body.user === 'harleymacedo' && req.body.pass === '123456') {
+    if (req.body.user === process.env.USER && req.body.pass === process.env.PASS) {
         const id = 1;
         var token = jwt.sign({id}, process.env.APP_KEY, {expiresIn: 300});
         res.set("x-access-token", token);
