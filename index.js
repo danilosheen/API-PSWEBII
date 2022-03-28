@@ -44,7 +44,7 @@ app.get('/alunos', async (req, res) => {
 
 });
 
-app.get('/alunos/:id', (req, res) => {
+app.get('/aluno/:id', (req, res) => {
     let achado = null;
     dados.forEach( (objeto) => {
         if (objeto.id == req.params.id) {
