@@ -6,7 +6,7 @@ const {obterAlunos} = require('./model/alunoModel');
 app.use(express.json());
 
 app.post('/login', (req, res) => {
-    if (req.body.user === process.env.USER && req.body.pass === process.env.PASS) {
+    if (req.body.user === 'danilo321' && req.body.pass === 'danilo321') {
         const id = 1;
         var token = jwt.sign({id}, process.env.APP_KEY, {expiresIn: 300});
         res.set("x-access-token", token);
