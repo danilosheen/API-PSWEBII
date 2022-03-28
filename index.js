@@ -5,7 +5,6 @@ const {obterAlunos} = require('./model/alunoModel');
 
 app.use(express.json());
 
-
 app.post('/login', (req, res) => {
     if (req.body.user === process.env.USER && req.body.pass === process.env.PASS) {
         const id = 1;
@@ -33,11 +32,8 @@ function verifyJWT (req, res, next) {
     });
 }
 
-app.get('/alunos', (req, res) => {
-    res.json(dados);
-});
 
-app.get('/bd/alunos', async (req, res) => {
+app.get('/alunos', async (req, res) => {
     try{
         const resultado = await obterAlunos(req, res);
         const dados = await resultado.rows;
