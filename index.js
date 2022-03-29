@@ -45,22 +45,17 @@ app.get('/alunos', async (req, res) => {
 
 });
 
-app.get('/aluno/:id', (req, res) => {
-    let achado = null;
-    dados.forEach( (objeto) => {
-        if (objeto.id == req.params.id) {
-            achado = objeto;
-        } 
-    });
-    if (achado) {
-        res.json(achado);
-    } else {
-        res.json({
-            mensagem: 'Valor não encontrado',
-            erro: true
-        });
+app.get('/aluno/:id', async (req, res) => {
+    
+    try{
+        const resultado = await obterAluno(req, res);
+        const dados = await resultado.rows;
+        res.json(dados);
+    } catch(erro) {
+        res.json({'mensagem': 'Erro na obteção dos dados'})
     }
-});
+     
+    });
 
 app.post('/alunos', verifyJWT, (req, res, next) => {
     dados.push(req.body);
