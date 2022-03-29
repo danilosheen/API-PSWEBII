@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
 const {obterAlunos} = require('./model/alunoModel');
-require('dotenv');
+require('dotenv').config()
 
 app.use(express.json());
 
@@ -94,4 +94,4 @@ app.delete('/alunos', (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT);
