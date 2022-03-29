@@ -45,7 +45,7 @@ app.get('/alunos', async (req, res) => {
 
 });
 
-app.get('/aluno/:id', async (req, res) => {
+app.get('/alunos/:id', async (req, res) => {
     
     try{
         const resultado = await obterAluno(req, res);
