@@ -2,13 +2,14 @@ const express = require('express');
 const app = express();
 const jwt = require('jsonwebtoken');
 const {obterAlunos} = require('./model/alunoModel');
+require('dotenv');
 
 app.use(express.json());
 
 app.post('/login', (req, res) => {
-    if (req.body.user === process.env.USUARIO && req.body.pass === process.env.SENHA) {
+    if (req.body.user === 'danilo' && req.body.pass === '123') {
         const id = 1;
-        var token = jwt.sign({id}, process.env.APP_KEY, {expiresIn: 300});
+        var token = jwt.sign({id}, 'minhachave', {expiresIn: 300});
         res.set("x-access-token", token);
         res.json({auth: true, token: token});
     } else {
@@ -93,4 +94,4 @@ app.delete('/alunos', (req, res) => {
     });
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);
