@@ -13,8 +13,23 @@ const Login = (request, response) => {
     }
 }
 
+function verifyJWT (request, response, next){
+    let token = req.headers['x-access-token'];
+    if (!token){
+        return res.status(401).json({ auth: false, mensagem: 'Sem token de verificação'});
+
+    }
+
+    jwt.verify(token, process.env.APP_KEY, function(error, decoded){
+        if (error){
+            return res.status(500).json({ mensagem: 'Token inválido'});
+        }
+        next();
+    });
+}
+
 const getAlunos = (request, response) => {
-    pool.query('SELECT * FROM pessoas ORDER BY id DESC', (error, results) => {
+    con.query('SELECT * FROM pessoas ORDER BY id DESC', (error, results) => {
         if (error) {
             throw error
         }
@@ -25,7 +40,7 @@ const getAlunos = (request, response) => {
 const getAlunoById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM pessoas WHERE id = $1', [id], (error, results) => {
+    con.query('SELECT * FROM pessoas WHERE id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -36,7 +51,7 @@ const getAlunoById = (request, response) => {
 const createAluno = (request, response) => {
     const { id, nome, curso } = request.body
 
-    pool.query('INSERT INTO pessoas (id, nome, curso) VALUES ($1, $2, $3)', [id, nome, curso], (error, result) => {
+    con.query('INSERT INTO pessoas (id, nome, curso) VALUES ($1, $2, $3)', [id, nome, curso], (error, result) => {
         if (error) {
             throw error
         }
@@ -48,7 +63,7 @@ const updateAluno = (request, response) => {
     const iden = parseInt(request.params.iden)
     const { id, nome, curso } = request.body
 
-    pool.query(
+    con.query(
         'UPDATE pessoas SET id = $1, nome = $2, curso = $3 WHERE id = $4',
         [id, nome, curso, iden],
         (error, result) => {
@@ -63,7 +78,7 @@ const updateAluno = (request, response) => {
 const deleteAluno = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM pessoas WHERE id = $1', [id], (error, result) => {
+    con.query('DELETE FROM pessoas WHERE id = $1', [id], (error, result) => {
         if (error) {
             throw error
         }
