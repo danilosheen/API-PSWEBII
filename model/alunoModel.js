@@ -30,7 +30,7 @@ function verifyJWT (request, response, next){
 }
 
 const getAlunos = (request, response) => {
-    con.query('SELECT * FROM alunos ORDER BY id DESC', (error, results) => {
+    con.query('SELECT * FROM alunos', (error, results) => {
         if (error) {
             throw error
         }
@@ -41,7 +41,7 @@ const getAlunos = (request, response) => {
 const getAlunoById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    con.query('SELECT * FROM pessoas WHERE id = $1', [id], (error, results) => {
+    con.query('SELECT * FROM alunos WHERE id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -52,11 +52,11 @@ const getAlunoById = (request, response) => {
 const createAluno = (request, response) => {
     const { id, nome, curso } = request.body
 
-    con.query('INSERT INTO pessoas (id, nome, curso) VALUES ($1, $2, $3)', [id, nome, curso], (error, result) => {
+    con.query('INSERT INTO alunos (id, nome, curso) VALUES ($1, $2, $3)', [id, nome, curso], (error, result) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`Pessoa criada com sucesso.`)
+        response.status(201).send(`Aluno criada com sucesso.`)
     })
 }
 
@@ -65,7 +65,7 @@ const updateAluno = (request, response) => {
     const { id, nome, curso } = request.body
 
     con.query(
-        'UPDATE pessoas SET id = $1, nome = $2, curso = $3 WHERE id = $4',
+        'UPDATE alunos SET id = $1, nome = $2, curso = $3 WHERE id = $4',
         [id, nome, curso, iden],
         (error, result) => {
             if (error) {
@@ -79,7 +79,7 @@ const updateAluno = (request, response) => {
 const deleteAluno = (request, response) => {
     const id = parseInt(request.params.id)
 
-    con.query('DELETE FROM pessoas WHERE id = $1', [id], (error, result) => {
+    con.query('DELETE FROM alunos WHERE id = $1', [id], (error, result) => {
         if (error) {
             throw error
         }
