@@ -56,7 +56,7 @@ const createAluno = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`Aluno criada com sucesso.`)
+        response.status(201).send(`Aluno criado com sucesso.`)
     })
 }
 
@@ -71,7 +71,7 @@ const updateAluno = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(200).send(`Pessoa ${iden} atualizada com sucesso.`)
+            response.status(200).send(`Aluno ${iden} atualizado com sucesso.`)
         }
     )
 }
@@ -83,7 +83,7 @@ const deleteAluno = (request, response) => {
         if (error) {
             throw error
         }
-        response.status(200).send(`Pessoa removida com sucesso com o identificador: ${id}`)
+        response.status(200).send(`Aluno removido com sucesso com o identificador: ${id}`)
     })
 }
 
