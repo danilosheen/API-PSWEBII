@@ -87,6 +87,7 @@ const deleteAluno = (request, response) => {
 }
 
 module.exports = {
+    verifyJWT,
     Login,
     getAlunos,
     getAlunoById,
