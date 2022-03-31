@@ -30,7 +30,7 @@ function verifyJWT (request, response, next){
 }
 
 const getAlunos = (request, response) => {
-    con.query('SELECT * FROM alunos ORDERED BY id ASC', (error, results) => {
+    con.query('SELECT * FROM alunos ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
         }
