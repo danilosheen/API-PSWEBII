@@ -4,10 +4,11 @@ const app = express();
 const repository = require('./model/alunoModel');
 app.use(express.json());
 
-app.get('/pessoas', repository.getPessoas)
-app.get('/pessoas/:id', repository.getPessoaById)
-app.post('/pessoas', repository.createPessoa)
-app.put('/pessoas/:id', repository.updatePessoa)
-app.delete('/pessoas/:id', repository.deletePessoa)
+app.post('/login', repository.Login)
+app.get('/alunos', repository.getAlunos)
+app.get('/alunos/:id', repository.getAlunoById)
+app.post('/alunos', repository.createAluno)
+app.put('/alunos/:id', repository.updateAluno)
+app.delete('/alunos/:id', repository.deleteAluno)
 
 app.listen(process.env.PORT);
