@@ -1,6 +1,7 @@
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const con = require('./conexao');
+const jwt = require('jsonwebtoken')
 
 const Login = (request, response) => {
     if (req.body.user === process.env.USUARIO && req.body.pass === process.env.SENHA) {
