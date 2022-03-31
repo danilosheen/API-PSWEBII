@@ -61,7 +61,7 @@ const createAluno = (request, response) => {
 }
 
 const updateAluno = (request, response) => {
-    const iden = parseInt(request.params.iden)
+    const iden = parseInt(request.params.id)
     const { id, nome, curso } = request.body
 
     con.query(
