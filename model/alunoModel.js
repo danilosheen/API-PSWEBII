@@ -3,7 +3,7 @@ const res = require('express/lib/response');
 const con = require('./conexao');
 const jwt = require('jsonwebtoken')
 
-const Login = (request, response) => {
+const login = (request, response) => {
     if (req.body.user === process.env.USUARIO && req.body.pass === process.env.SENHA) {
         const id = 1;
         var token = jwt.sign({ id }, process.env.APP_KEY, { expiresIn: 300 });
@@ -30,7 +30,7 @@ function verifyJWT (request, response, next){
 }
 
 const getAlunos = (request, response) => {
-    con.query('SELECT * FROM pessoas ORDER BY id DESC', (error, results) => {
+    con.query('SELECT * FROM alunos ORDER BY id DESC', (error, results) => {
         if (error) {
             throw error
         }
@@ -89,7 +89,7 @@ const deleteAluno = (request, response) => {
 
 module.exports = {
     verifyJWT,
-    Login,
+    login,
     getAlunos,
     getAlunoById,
     createAluno,
