@@ -13,3 +13,4 @@ app.put('/alunos/:id', repository.verifyJWT, repository.updateAluno)
 app.delete('/alunos/:id', repository.verifyJWT, repository.deleteAluno)
 
 app.listen(process.env.PORT) || 3000;
+console.log("Running server...")
