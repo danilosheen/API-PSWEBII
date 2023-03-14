@@ -1,4 +1,6 @@
 # API-Projetos e Sistemas WEB 2
+## Licença
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/danilosheen/API-PSWEBII/blob/main/LICENSE)
 ## Sobre o projeto
 Projeto proposto como atividade de introdução ao mundo das API's na disciplina de web 2
 ## Tecnologias utilizadas
