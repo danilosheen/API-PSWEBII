@@ -17,19 +17,19 @@ node npm install
 ```bash
 node index.js
 ```
-- Abra o navegador no endereço 127.0.0.1:3000/
+- Abra o navegador no endereço <a href="https://127.0.0.1:3000">127.0.0.1:3000/</a>
 - Agora é só adicionar a rota que deseja acessar
 ## Rotas cadastradas:
 - Get
-  - /alunos
-  - /alunos/id
+  - <a href="https://127.0.0.1:3000/alunos">/alunos</a>
+  - <a href="https://127.0.0.1:3000/alunos/id">/alunos/id</a>
 - Post
-  - /login
-  - /alunos
+  - <a href="https://127.0.0.1:3000/login">/login</a>
+  - <a href="https://127.0.0.1:3000/alunos">/alunos</a>
 - Put
-  - /alunos/id
+  - <a href="https://127.0.0.1:3000/alunos/id">/alunos/id</a>
 - Delete
-  - /alunos/id
+  - <a href="https://127.0.0.1:3000/alunos/id">/alunos/id</a>
 
 #### As rotas de criação, atualização e remoção exigem que o usuário esteja logado utilizando autenticação JWT passado para login pelo parâmetro x-access-token
 ##### - Os dados de login se encontram no .env
