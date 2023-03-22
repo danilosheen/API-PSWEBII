@@ -6,7 +6,6 @@
     },
     "routes":[
         {
-            "source": "/(.*)",
             "dest": "./index.js"
         }
     ]
