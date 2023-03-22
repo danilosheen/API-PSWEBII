@@ -1,11 +1,13 @@
 {
-    "version": 2,
+    "installCommand": "npm install",
     "public": true,
     "build": {
+        "src": "*.js",
         "use": "@vercel/node"
     },
     "routes":[
         {
+            "src": "/alunos",
             "dest": "./index.js"
         }
     ]
