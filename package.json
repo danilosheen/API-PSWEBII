@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +20,5 @@
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "yarn": "^1.22.18"
-  },
-  "engines": {
-    "node": "20.x"
   }
 }
