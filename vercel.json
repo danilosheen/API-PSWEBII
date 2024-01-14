@@ -1,15 +1,8 @@
 {
-   "buildCommand": "node index.js",
-    "installCommand": "npm install",
-    "public": true,
-    "build": {
-        "src": "*.js",
-        "use": "@vercel/node"
-    },
-    "routes":[
-        {
-            "src": "/alunos",
-            "dest": "./index.js"
-        }
-    ]
+  "buildCommand": "node index.js",
+  "installCommand": "npm install",
+  "public": true,
+
+  "builds": [{ "src": "./index.js", "use": "@vercel/static-build" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.js" }]
 }
